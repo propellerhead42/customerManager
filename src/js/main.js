@@ -12,11 +12,4 @@ document.getElementById("closeForm2").addEventListener('click', () => {
 });
 
 
-function successRegistration() {
-
-}
-
-function successCustAdd() {
-    
-}
 

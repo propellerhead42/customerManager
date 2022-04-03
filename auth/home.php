@@ -30,7 +30,6 @@ $handle->execute($params);
         </div>
     </header>
     <main class="">
-        <p><?php $msg = 'it works'; echo successElement($msg) ?></p>
         <h1 class="pad-small">created Customers:</h1>
         <table class="customer-table"> 
             <tr>

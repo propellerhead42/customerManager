@@ -22,20 +22,25 @@ body {
 .success-overlay {
     position: absolute;
     top: 0;
-    width: 100vw;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    left: 0;
+    right: 0;
+    background: red;
+
 }
 
-.success-overlay h3 {
+.success-overlay .success,
+.success-overlay .error {
     z-index: 1;
     background-color: var(--green-text);
     padding: 2rem;
     border-radius: 5px;
     border: 2px solid white;
     color: black;
+}
+
+.success-overlay .error {
+    background-color: var(--red-text);
+    color: white;
 }
 
 .success-overlay i {

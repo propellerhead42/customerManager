@@ -19,8 +19,18 @@ function displayEmptyCustomers () {
 function successElement($msg) {
     echo '
     <div class="success-overlay scale-out-center">
-        <h3 class="success-text">
+        <h3 class="success">
             ' . $msg . ' <i class="fa-solid fa-check"></i>
+        </h3>
+    </div> 
+    ';
+}
+
+function errorElement($msg) {
+    echo '
+    <div class="success-overlay scale-out-center">
+        <h3 class="error">
+            ' . $msg . ' <i class="fas fa-exclamation"></i>
         </h3>
     </div> 
     ';

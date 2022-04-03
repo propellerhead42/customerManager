@@ -2,14 +2,15 @@
 
 session_start();
 
-require_once 'db-connection.php';
+include_once 'db-connection.php';
+include_once '../include/functions.inc.php';
 
 if(isset($_POST['login'])) {
 
     if(isset($_POST['email'],$_POST['password']) && !empty($_POST['email']) && !empty($_POST['password']))
 	{
-		$email = trim($_POST['email']);
-		$password = trim($_POST['password']);
+		$email = $_POST['email'];
+		$password = $_POST['password'];
  
 		if(filter_var($email, FILTER_VALIDATE_EMAIL))
 		{
@@ -29,12 +30,15 @@ if(isset($_POST['login'])) {
 				}
 				else
 				{
-					echo "Wrong Email or Password";
+					include_once "../include/head.inc.php";
+					echo errorElement("Wrong Password or Email");
+					echo "<meta http-equiv='refresh' content='2; url=../index.php'>";
 				}
 			}
 			else
 			{
 				echo "Wrong Email or Password";
+				$SESSION['errorMsg'] = "Wrong Email or Password";
 			}
 			
 		}
@@ -49,7 +53,6 @@ if(isset($_POST['login'])) {
 		echo "Email and Password are required";	
 	}
 }
-
 
 
 
