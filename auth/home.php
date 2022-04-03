@@ -9,6 +9,7 @@ if(!isset($_SESSION['users_id'])){
     header('location: ../index.php');
 }
 
+
 $sql = "SELECT  cust_name, cust_phone, cust_zip, cust_city, cust_street, created_at, edited_at, cust_id FROM customers WHERE created_from = :createdId";
 $handle = $pdo->prepare($sql);
 $params = ['createdId'=>$_SESSION['users_id']];
@@ -29,6 +30,7 @@ $handle->execute($params);
         </div>
     </header>
     <main class="">
+        <p><?php $msg = 'it works'; echo successElement($msg) ?></p>
         <h1 class="pad-small">created Customers:</h1>
         <table class="customer-table"> 
             <tr>

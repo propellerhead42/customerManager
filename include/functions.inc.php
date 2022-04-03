@@ -2,6 +2,7 @@
 
 include_once "../auth/db-connection.php";
 
+// output of a html tr element, when query to select customers is < 0
 function displayEmptyCustomers () {
     echo '
         <tr>
@@ -11,6 +12,17 @@ function displayEmptyCustomers () {
                 </div>
             </td>
         </tr>
+    ';
+}
+
+// gets displayed when something was succesfull, has animation class, fades out after 2 seconds
+function successElement($msg) {
+    echo '
+    <div class="success-overlay scale-out-center">
+        <h3 class="success-text">
+            ' . $msg . ' <i class="fa-solid fa-check"></i>
+        </h3>
+    </div> 
     ';
 }
 
