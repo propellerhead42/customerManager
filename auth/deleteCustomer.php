@@ -1,22 +1,23 @@
 <?php
 
+session_start();
 include_once 'db-connection.php';
+include_once '../include/functions.inc.php';
 
-global $pdo;
+if(isset($_SESSION["users_id"])) {
 
-$custId = $_GET['id'];
+    $custId = $_GET['id'];
 
-$sql = "DELETE FROM customers WHERE cust_id = $custId;";
+    $sql = "DELETE FROM customers WHERE cust_id = $custId;";
 
-try {
     $pdo->exec($sql);
-} catch (PDOException $e){
-    echo $e->getMessage();
+    $pdo = null;
+
+    echo errorElement("Deleted Customer");
+    echo "<meta http-equiv='refresh' content='2; url=../index.php'>";
+
 }
 
-echo "<script>alert('Created new Customer successfully')</script>";
 header("location: home.php");
-$pdo = null;
-
 ?>
 

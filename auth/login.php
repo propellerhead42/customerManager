@@ -26,7 +26,7 @@ if(isset($_POST['login'])) {
 					unset($getRow['users_pw']);
 					$_SESSION = $getRow;
 					header('location: home.php');
-					exit();
+					$pdo = null;
 				}
 				else
 				{
@@ -54,7 +54,7 @@ if(isset($_POST['login'])) {
 	}
 }
 
-
+?>
 
 
 

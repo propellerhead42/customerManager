@@ -3,7 +3,13 @@
 session_start();
 
 include_once 'db-connection.php';
+include_once '../include/functions.inc.php';
+include_once '../include/head.inc.php';
 
+
+if(!isset($_SESSION["users_id"])){
+    header("location: ../index.php");
+}
 
 if(isset($_POST['addCustomer'])) {
 
@@ -11,21 +17,19 @@ if(isset($_POST['addCustomer'])) {
     $phone = $_POST['phone'];
     $zip = $_POST['zip'];
     $city = $_POST['city'];
-    $street = $_POST['street'];
+    $street = str_replace("ß", "ss", $_POST['street']);
+
     $userId = $_SESSION['users_id'];
 
     $sql = 'INSERT INTO customers(cust_name, cust_phone, cust_zip, cust_city, cust_street, created_from) VALUES (?, ?, ?, ?, ?, ?)';
     $stmt = $pdo->prepare($sql);
 
-    try{
-        $stmt->execute([$name, $phone, $zip, $city, $street, $userId]);
-    } catch (Exception $e) {
-         echo "Insert failed" . $e;
+   
+    if($stmt->execute([$name, $phone, $zip, $city, $street, $userId])) {
+        echo successElement("Created Customer successfully");
+		echo "<meta http-equiv='refresh' content='2; url=../auth/home.php'>";
     }
 
-    echo "<script>alert('Created new Customer successfully')</script>";
-    header("location: home.php");
     $pdo = null;
-
 }
 ?>
