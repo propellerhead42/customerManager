@@ -1,0 +1,70 @@
+/* FLEX STUFF */
+.flex-row {
+    display: flex;
+}
+
+.flex-col {
+    display: flex;
+    flex-direction: column;
+}
+
+.align-left {
+    align-items: flex-start;
+}
+
+.align-center {
+    align-items: center;
+}
+
+.justify-center {
+    justify-content: center;
+}
+
+.space-between {
+    justify-content: space-between;
+}
+
+/* SPACING */
+.margin-small {
+    margin: 0.25rem;
+}
+
+.margin-medium {
+    margin: 0.5rem;
+}
+
+.margin-large {
+    margin: 1rem;
+}
+
+.pad-small {
+    padding: 0.25rem;
+}
+
+.pad-medium {
+    padding: 0.5rem;
+}
+
+.pad-large {
+    padding: 1rem;
+}
+
+.gap-small {
+    gap: 0.25rem;
+}
+
+
+/* TEXT STYLE/COLOR */
+.yellow-txt {
+    color: var(--yellow-txt);
+}
+
+.text-center {
+    text-align: center;
+}
+
+
+/* find some name */
+.hover-scale:hover {
+    transform: scale(1.1);
+}

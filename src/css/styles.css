@@ -1,0 +1,240 @@
+@import url(../css/variables.css);
+@import url(../css/fonts.css);
+@import url(../css/animations.css);
+@import url(../css/utilities.css);
+
+body {
+    background-color: black;
+    background-image: url('../img/world-bgn.png');
+    background-size: cover;
+    font-family: "Quicksand-Light";
+    color: var(--text-light);
+    position: relative;
+}
+
+.empty-customers {
+    background-color: var(--main-bgn);
+    display: flex;
+    padding: 2rem;
+
+}
+
+.customer-container {
+    background: red;
+    display: flex;
+    width: 100%;
+}
+
+.addCustomerForm {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    top: 40%;
+    left: 50%;
+    background: var(--main-bgn);
+    padding: 3rem;
+    width: clamp(300px, 50%, 60%);
+    border: white 1px solid;
+}
+
+.addCustomerForm form>* {
+    margin: 1rem;
+}
+
+.addCustomerForm button[type=submit] {
+    margin: 0.25rem auto;
+    width: 50%;
+}
+
+.addCustomerForm button:not(button[type=submit]) {
+    color: var(--yellow-text);
+    position: absolute;
+    right: 1rem;
+    top: 1rem;
+    background-color: transparent;
+    padding: 0.25rem;
+    border: none;
+}
+
+.circle {
+    background: var(--nav-bgn);
+    width: 5rem;
+    height: 5rem;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+}
+
+.customer-table {
+    width: 90%;
+    margin: 0 auto;
+}
+
+.customer-table-row {
+    background-color: var(--main-bgn);
+    height: 2rem;
+}
+
+.customer-table-row td {
+    padding-left: 0.25rem;
+}
+
+
+nav {
+    padding: 1rem;
+}
+
+nav a {
+    font-family: "PoiretOne-Regular";
+    font-size: 2rem;
+    text-decoration: none;
+    color: var(--text-light);
+}
+
+header {
+    color: var(--text-light);
+    font-family: "RozhaOne";
+}
+
+header h1 {
+    font-size: var(--fnt-main-heading);
+}
+
+header h2 {
+    color: var(--gray-text);
+    margin-left: 2rem;
+    padding: 0;
+}
+
+.flex-container {
+    display: flex;
+    height: 90vh;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.flex-column {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-container {
+    border: 1px solid white;
+    padding: 2rem;
+    font-family: 'Quicksand-Regular';
+}
+
+.login-form {
+    background-color: var(--form-bgn);
+}
+
+.form-container h3 {
+    font-family: 'Quicksand-Medium';
+}
+
+.form-container input {
+    margin: 0.5rem 0;
+    border-radius: 5px;
+    border: none;
+    padding: 0.25rem;
+}
+
+.form-container input::placeholder {
+    color: gray;
+}
+
+.form-container button {
+    width: 50%;
+    margin: 0 auto;
+}
+
+.form-container .register-link {
+    color: var(--yellow-text);
+    margin-top: 2.25rem;
+}
+
+.form-container.register-form {
+    background-color: var(--form-bgn);
+    width: clamp(300px, 50%, 70%);
+    margin: 0 auto;
+}
+
+
+.success-alert {
+    position: absolute;
+    top: 20vh;
+    bottom: 20vh;
+    left: 20vw;
+    right: 20vw;
+    border-radius: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: green;
+}
+
+.success-alert img {
+    max-width: 10%;
+}
+
+
+
+@media (max-width: 1210px) {
+    .flex-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 1rem;
+    }
+}
+
+@media (max-width: 1100px) {
+    .circle {
+        width: 3rem;
+        height: 3rem;
+        font-size: 2rem;
+    }
+
+}
+
+
+@media (max-width: 680px) {
+    :root {
+        --fnt-main-heading: 3rem;
+    }
+
+    .customer-table th:not(:first-child) {
+        display: none;
+    }
+
+    .customer-table-row td:not(.mobile-stay) {
+        display: none;
+    }
+
+    .customer-table-row td:not(:first-child) {
+        padding-left: 0;
+    }
+
+    .customer-table-row::after {
+        content: '';
+        background-image: url("../img/check-solid.svg");
+        background-repeat: no-repeat;
+        position: relative;
+        right: 0;
+    }
+}
+
+@media (max-width: 545px) {
+    :root {
+        --fnt-main-heading: 2.5rem;
+    }
+}
+
+@media (max-width: 450px) {
+    :root {
+        --fnt-main-heading: 2rem;
+    }
+
+}

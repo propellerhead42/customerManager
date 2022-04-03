@@ -1,0 +1,25 @@
+:root {
+    /* Text Colors */
+
+    --logo-color: #716f6f;
+    --text-light: #ffffff;
+    --gray-text: rgb(123, 123, 123);
+    --yellow-txt: #e0b57b;
+
+
+    /* Bgn Colors: */
+    --form-bgn-start: rgba(100, 100, 100, 0.3);
+    --form-bgn: rgba(0, 0, 0, 0.7);
+    --main-bgn: #4d4d4d;
+    --test-color: rgb(146, 223, 23);
+    --circle-bgn: rgb(69, 75, 91);
+    --nav-bgn: #0a1728;
+
+    /* Colors: */
+    --yellow-text: #e0b57b;
+    --green-text: #27d138;
+    --red-text: #9f1b1b;
+
+    /* Font-Sizes: */
+    --fnt-main-heading: 3.75rem;
+}
