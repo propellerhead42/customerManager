@@ -11,9 +11,8 @@ $dsn = 'mysql:host=localhost;dbname=ctomy';
         $pdo = new PDO($dsn,$user,$pw);
         $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     } catch(PDOException $e) {
-        echo "PDO error".$e->getMessage();
+        echo "PDO Connection error: " . $e->getMessage();
         die();
     }
-
 
 ?>

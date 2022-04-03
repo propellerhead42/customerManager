@@ -19,6 +19,35 @@ body {
 
 }
 
+.success-overlay {
+    position: absolute;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.success-overlay h3 {
+    z-index: 1;
+    background-color: var(--main-bgn);
+    padding: 2rem;
+    border-radius: 5px;
+}
+
+.success-overlay i {
+    color: green;
+}
+
+.success-overlay::after {
+    content: '';
+    position: absolute;
+    width: content;
+    height: content;
+    background: var(--main-bgn);
+}
+
 .customer-container {
     background: red;
     display: flex;

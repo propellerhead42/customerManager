@@ -1,12 +1,9 @@
-<?php 
-include 'include/head.inc.php';
-include 'auth/db-connection.php';
+<?php include 'include/head.inc.php'; ?>
 
-?>
 <nav>
     <a href="#">ctomy</a>
 </nav>
-<div class="flex-container">
+<main class="flex-container">
     <header>
         <h1>Manage your customers</h1>
         <h2>easy</h2>
@@ -21,7 +18,7 @@ include 'auth/db-connection.php';
         </form>
         <a class="register-link" href="#registerForm">Create new Account</a>
     </section> 
-</div>
+</main>
 <section id="registerForm" class="form-container register-form">
     <h3>Create an Account</h3>
     <form class="flex-column" action="auth/register.php" method="POST">
@@ -36,5 +33,5 @@ include 'auth/db-connection.php';
         <button class="margin-top-1" type="submit" name="register">Create</button>
     </form>
 </section>
-
-<?php include 'include/footer.inc.php';
+</body>
+</html> 
