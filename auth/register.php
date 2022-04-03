@@ -3,9 +3,12 @@
 include_once 'db-connection.php';
 include_once '../include/functions.inc.php';
 include_once '../include/head.inc.php';
+
+if(!isset($_SESSION['users_id'])){
+    header('location: ../index.php');
+};
  
 if(isset($_POST['register'])) {
-
     $username = trim($_POST['username']);
 
     if($username != "" && $_POST['password'] != "" && $_POST['password'] == $_POST['repPwd']){
@@ -19,25 +22,17 @@ if(isset($_POST['register'])) {
         $hashedPw = password_hash($pwd, PASSWORD_DEFAULT);
 
         $sql = "INSERT INTO users(users_username, users_email, users_pw) VALUES (:uName, :uEmail, :uPw)";
-
         $params = ['uName'=> $username, 'uEmail' => $email, 'uPw' => $hashedPw];
-
         $stmt = $pdo->prepare($sql);
 
-        $stmt->execute($params);
-
-
+        if($stmt->execute($params)) {
+            echo successElement("Registration successfull");
+            echo "<meta http-equiv='refresh' content='2; url=../index.php?reg=succ'>";
+        } else {
+            echo errorElement("Error Occured");
+            echo "<meta http-equiv='refresh' content='2; url=../index.php'>";
+        }
         $pdo = null;
-        echo successElement("Registration successfull");
-        echo "<meta http-equiv='refresh' content='2; url=../index.php'>";
-
-    } else{
-        echo errorElement("Error occured"); 
-        echo "<meta http-equiv='refresh' content='2; url=../index.php'>";
-    }
-
-} else {
-     header("location: ../index.php");
-     exit();
+    } 
 }
 ?>

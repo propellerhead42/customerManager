@@ -1,9 +1,17 @@
-<?php include 'include/head.inc.php'; ?>
+<?php 
+    include 'include/head.inc.php';
+    include 'include/functions.inc.php';
+?>
 
 <nav>
     <a href="#">ctomy</a>
 </nav>
 <main class="flex-container">
+    <?php 
+        if(isset($_GET['reg'])) {
+            echo successElement("Successfully registrated");
+        } 
+    ?>
     <header>
         <h1>Manage your customers</h1>
         <h2>easy</h2>

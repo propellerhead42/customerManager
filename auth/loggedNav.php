@@ -1,5 +1,7 @@
 <?php
-
+    if(!isset($_SESSION['users_id'])){
+        header('location: ../index.php');
+    }
 ?>
 
 <nav class="flex-col justify-center align-center space-between">

@@ -5,6 +5,10 @@ session_start();
 include_once 'db-connection.php';
 include_once '../include/functions.inc.php';
 
+if(!isset($_SESSION['users_id'])){
+    header('location: ../index.php');
+}
+
 if(isset($_POST['login'])) {
 
     if(isset($_POST['email'],$_POST['password']) && !empty($_POST['email']) && !empty($_POST['password']))

@@ -1,5 +1,9 @@
 <?php
 
+    if(!isset($_SESSION['users_id'])){
+        header('location: ../index.php');
+    }
+
     include_once "../auth/db-connection.php";
     include_once "../include/functions.inc.php";
 

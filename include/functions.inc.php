@@ -1,7 +1,5 @@
 <?php
 
-include_once "../auth/db-connection.php";
-
 // output of a html tr element, when query to select customers is < 0
 function displayEmptyCustomers () {
     echo '

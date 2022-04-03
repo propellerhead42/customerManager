@@ -4,7 +4,6 @@ include_once 'db-connection.php';
 include_once '../include/functions.inc.php';
 include_once '../include/head.inc.php';
 
-
 if(!isset($_SESSION["users_id"])){
     header("location: ../index.php");
 }
