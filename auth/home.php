@@ -3,18 +3,9 @@
 include_once "../auth/db-connection.php";
 include_once "../include/functions.inc.php";
 
-session_start();
-
 if(!isset($_SESSION['users_id'])){
     header('location: ../index.php');
 }
-
-
-$sql = "SELECT  cust_name, cust_phone, cust_zip, cust_city, cust_street, created_at, edited_at, cust_id FROM customers WHERE created_from = :createdId";
-$handle = $pdo->prepare($sql);
-$params = ['createdId'=>$_SESSION['users_id']];
-$handle->execute($params);
-
 
 ?>
 
@@ -42,8 +33,9 @@ $handle->execute($params);
                 <th>delete:</th>
             </tr>
             <?php 
-                if($handle->rowCount() > 0) {
-                    printCustomers();
+                global $isEmptyCustomers;
+                if($isEmptyCustomers == NULL) {
+                    printCustomers(); 
                 } else {
                     displayEmptyCustomers();
                 }

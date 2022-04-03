@@ -1,7 +1,5 @@
 <?php
 
-session_start();
-
 include_once 'db-connection.php';
 include_once '../include/functions.inc.php';
 include_once '../include/head.inc.php';
@@ -24,12 +22,15 @@ if(isset($_POST['addCustomer'])) {
     $sql = 'INSERT INTO customers(cust_name, cust_phone, cust_zip, cust_city, cust_street, created_from) VALUES (?, ?, ?, ?, ?, ?)';
     $stmt = $pdo->prepare($sql);
 
-   
-    if($stmt->execute([$name, $phone, $zip, $city, $street, $userId])) {
+    try {
+        $stmt->execute([$name, $phone, $zip, $city, $street, $userId]);
         echo successElement("Created Customer successfully");
 		echo "<meta http-equiv='refresh' content='2; url=../auth/home.php'>";
+    } catch (PDOException $e) {
+        echo errorElement("An error occured");
+		echo "<meta http-equiv='refresh' content='2; url=../auth/home.php'>";
     }
-
+    
     $pdo = null;
 }
 ?>
