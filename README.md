@@ -1,12 +1,10 @@
-<h1>customer Manager ctomy</h1>
+# Customer Manger Project for Codersbay
+## ctomy
+_Is a simple PHP CRUD Application, connected to a XAMPP Server and mysql Database_
 
-<p>Simple PHP CRUD Application.</p>
-<ul>
-  <li>You can create a new Account and log in to it.</li>
-  <li>After login in you can create, edit or delete the customers you have created.</li>
-</ul>
+* You can create a new Account and log in to it.
+* After login in you can create, edit or delete the customers you have created.
 
-<div>
-  <p><strong>Build with:</strong></p>
-  <p>HTML, CSS3, JS, PHP XAMPP, MariaDB</p>
-</div>
+__Build with:__
+
+HTML, CSS3, PHP XAMPP, MariaDB
