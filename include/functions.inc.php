@@ -34,14 +34,16 @@ function errorElement($msg) {
     ';
 }
 
+// fetches all data from DB for each users, also added cust_id as GET parameter to edit or delete the wanted customer
 function printCustomers() {
     global $pdo;
+
     $sql = "SELECT  cust_name, cust_phone, cust_zip, cust_city, cust_street, created_at, edited_at, cust_id FROM customers WHERE created_from = :createdId";
     $handle = $pdo->prepare($sql);
     $params = ['createdId'=>$_SESSION['users_id']];
     $handle->execute($params);
     if($handle->rowCount() > 0){
-        $isEmptyCustomers = false;
+
         while($cust = $handle->fetch(PDO::FETCH_ASSOC)) {
             $created_date = DateTime::createFromFormat('Y-m-d', $cust['created_at']);
             $fmtcreatedDate = $created_date->format('d-m-Y');
@@ -55,7 +57,7 @@ function printCustomers() {
                     <td>' . $fmtcreatedDate . '</td>
                     <td>' . $fmteditedDate . '</td>
                     <td id="edit-btn" class="text-center mobile-stay">
-                        <a href="../auth/home.php?id='. $cust["cust_id"] .'">
+                        <a href="../auth/home.php?id='. $cust["cust_id"] .'"> 
                             <i class="fa-solid fa-pencil hover-scale"></i>
                         </a>
                     </td>
@@ -68,14 +70,15 @@ function printCustomers() {
             ';
         }
     } else {
-        $isEmptyCustomers = true;
+        echo displayEmptyCustomers();
     }
 
 }
 
 function getTotalEntries() :int {
     global $pdo;
-    $stmt = $pdo->query("SELECT COUNT(*) FROM customers");
+    $userId = $_SESSION['users_id'];
+    $stmt = $pdo->query("SELECT COUNT(*) FROM customers WHERE created_from = $userId ");
     $totalEntries = $stmt->fetch();
     return $totalEntries[0];
 }

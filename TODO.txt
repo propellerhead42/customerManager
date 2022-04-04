@@ -1,0 +1,4 @@
+1. css refactor
+2. mobile neeeds more love
+2. handle errormessages
+3. refactor all

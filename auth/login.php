@@ -4,10 +4,8 @@ session_start();
 
 include_once 'db-connection.php';
 include_once '../include/functions.inc.php';
+include_once "../include/head.inc.php";
 
-if(!isset($_SESSION['users_id'])){
-    header('location: ../index.php');
-}
 
 if(isset($_POST['login'])) {
 
@@ -34,7 +32,6 @@ if(isset($_POST['login'])) {
 				}
 				else
 				{
-					include_once "../include/head.inc.php";
 					echo errorElement("Wrong Password or Email");
 					echo "<meta http-equiv='refresh' content='2; url=../index.php'>";
 				}
@@ -42,7 +39,7 @@ if(isset($_POST['login'])) {
 			else
 			{
 				echo "Wrong Email or Password";
-				$SESSION['errorMsg'] = "Wrong Email or Password";
+				$SESSION['error'] = "Wrong Email or Password";
 			}
 			
 		}

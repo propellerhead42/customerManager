@@ -1,5 +1,0 @@
-
-Test User{
-    "email": dfgdfg@email.de,
-    "pw": 123456
-}

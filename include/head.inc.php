@@ -1,4 +1,4 @@
-<?php define("ROOT", "/customerManager/") ?>
+<?php define("ROOT", "/customerManager-master/") ?>
 
 <!DOCTYPE html>
 <html lang="de">

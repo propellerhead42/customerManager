@@ -1,38 +1,62 @@
 <?php 
 
+session_start();
 include_once 'db-connection.php';
-include_once '../include/functions.inc.php';
 include_once '../include/head.inc.php';
 
-if(!isset($_SESSION['users_id'])){
-    header('location: ../index.php');
-};
- 
 if(isset($_POST['register'])) {
-    $username = trim($_POST['username']);
+    $username = trim(htmlspecialchars($_POST['username']));
+    $email = trim(htmlspecialchars($_POST['email']));
+    $pwd = trim(htmlspecialchars($_POST['password']));
+    $repPwd = trim(htmlspecialchars($_POST['repPwd']));
 
-    if($username != "" && $_POST['password'] != "" && $_POST['password'] == $_POST['repPwd']){
-       
-        $username = $_POST['username'];
-        $email = $_POST['email'];
-        $username = $_POST['username'];
-        $pwd = $_POST['password'];
+    //Verifcation 
+    if (empty($username) || empty($email) || empty($pwd) || empty($repPwd)){
+        $errorMsg = "Complete all fields";
+    }
 
-        // encrypt pw
+    // Password match
+    if ($pwd != $repPwd){
+        $errorMsg = "Passwords don't match";
+    }
+
+    // Email validation
+    if (!filter_var($email, FILTER_VALIDATE_EMAIL)){
+        $errorMsg = "Enter a  valid email";
+    }
+
+    // Password length
+    if (strlen($pwd) <= 6){
+        $errorMsg = "Choose a password longer then 8 character";
+    }
+
+    if(!isset($errorMsg)){
+    //no error
+    $sthandler = $pdo->prepare("SELECT users_username FROM users WHERE users_username = :uName");
+    $sthandler->bindParam(':uName', $username);
+    
+    if($sthandler->rowCount() > 0){
+        $errorMsg = 'exists! cannot insert';
+        
+    } else {
+
+        // hash pw
         $hashedPw = password_hash($pwd, PASSWORD_DEFAULT);
 
-        $sql = "INSERT INTO users(users_username, users_email, users_pw) VALUES (:uName, :uEmail, :uPw)";
-        $params = ['uName'=> $username, 'uEmail' => $email, 'uPw' => $hashedPw];
-        $stmt = $pdo->prepare($sql);
+        //Securly insert into database
+        $sql = 'INSERT INTO users (users_username, users_email, users_pw) VALUES (:uName,:uEmail,:pw)';    
+        $query = $pdo->prepare($sql);
+        $query->execute(array(
+            ':uName' => $username,
+            ':uEmail' => $email,
+            ':pw' => $hashedPw // insert the encrypted pw
+        ));
 
-        if($stmt->execute($params)) {
-            echo successElement("Registration successfull");
-            echo "<meta http-equiv='refresh' content='2; url=../index.php?reg=succ'>";
-        } else {
-            echo errorElement("Error Occured");
-            echo "<meta http-equiv='refresh' content='2; url=../index.php'>";
-        }
-        $pdo = null;
-    } 
-}
+        header('location: ../index.php?uCrt');
+    }
+    }else{
+        header('location: ../index.php?fUcrt');
+        exit();
+    }
+}      
 ?>

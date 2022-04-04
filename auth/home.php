@@ -6,9 +6,7 @@ include_once "../include/functions.inc.php";
 if(!isset($_SESSION['users_id'])){
     header('location: ../index.php');
 }
-
 ?>
-
 <!-- Page Start -->
 <?php  include_once '../include/head.inc.php' ?>
 
@@ -32,14 +30,7 @@ if(!isset($_SESSION['users_id'])){
                 <th>edit:</th>
                 <th>delete:</th>
             </tr>
-            <?php 
-                global $isEmptyCustomers;
-                if($isEmptyCustomers == NULL) {
-                    printCustomers(); 
-                } else {
-                    displayEmptyCustomers();
-                }
-            ?>
+            <?= printCustomers(); ?>
         </table>
     </main>
 </div>

@@ -7,7 +7,7 @@ USE ctomy;
 
 CREATE TABLE users(
     users_id int(11) NOT NULL PRIMARY KEY AUTO_INCREMENT,
-    users_username varchar(60) NOT NULL UNIQUE,
+    users_username varchar(60) NOT NULL,
     users_email varchar(60) NOT NULL UNIQUE,
     users_pw varchar(200) NOT NULL 
 );
