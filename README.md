@@ -12,13 +12,10 @@ HTML, CSS3, PHP XAMPP, MariaDB
 <hr>
 
 ## Login Page
-<img src="./screenshots/login-page.png" style="max-width: 70%">
-
-## Register Form
-<img src="./screenshots/login-register.png" style="max-width: 70%">
+<img src="./screenshots/login.png" style="max-width: 70%">
 
 ## Home Page
-<img src="./screenshots/home-full.png" style="max-width: 70%">
+<img src="./screenshots/logedin.png" style="max-width: 70%">
 
 ## Mobile
 <img src="./screenshots/mobile.png" style="max-width: 70%">
